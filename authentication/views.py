@@ -6,13 +6,12 @@ from django.contrib.auth import authenticate
 # Create your views here.
 
 
-class AuthUserView(GenericAPIView):
+class AuthUserAPIView(GenericAPIView):
+    serializer_class = RegisterSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    def get(self, request,):
+    def get(self, request):
         user = request.user
-
         serializer = RegisterSerializer(user)
-
         return response.Response({'user':serializer.data})
 
 
