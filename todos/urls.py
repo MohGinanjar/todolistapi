@@ -4,7 +4,7 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.TodosAPIView.as_view(), name='todos'),
+    # path('', views.TodosAPIView.as_view(), name='todos'),
 
     # serach [ todos/?id=2, or todos/?desc="" or todos/?is_complete=true ]
 

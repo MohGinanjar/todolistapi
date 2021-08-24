@@ -7,21 +7,21 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from todos.pagination import CustomPageNumberPagination
 
-class TodosAPIView(ListCreateAPIView):
-    serializer_class = TodoSerializer
-    permission_classes = (IsAuthenticated,)
-    pagination_class = CustomPageNumberPagination
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
+# class TodosAPIView(ListCreateAPIView):
+#     serializer_class = TodoSerializer
+#     permission_classes = (IsAuthenticated,)
+#     pagination_class = CustomPageNumberPagination
+#     filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
 
-    filterset_fields = ['id', 'title', 'is_complete']
-    search_fields = ['id', 'title', 'is_complete']
-    ordering_fields = ['id', 'title', 'is_complete']
+#     filterset_fields = ['id', 'title', 'is_complete']
+#     search_fields = ['id', 'title', 'is_complete']
+#     ordering_fields = ['id', 'title', 'is_complete']
 
-    def perform_create(self, serializer):
-        return serializer.save(owner=self.request.user)
+#     def perform_create(self, serializer):
+#         return serializer.save(owner=self.request.user)
 
-    def get_queryset(self):
-        return Todo.objects.filter(owner=self.request.user)
+#     def get_queryset(self):
+#         return Todo.objects.filter(owner=self.request.user)
 
 
 class CreateTodoAPIView(CreateAPIView):
